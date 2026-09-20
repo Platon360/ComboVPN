@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComboVPN — лучший VPN в России, который обходит все ограничения</title>
+
+    <meta name="description" content="ComboVPN - лучший VPN в России, который обходит все ограничения.">
+    <meta name="keywords" content="впн, vpn, vps, vds, россия, россиян, российский, российских, ркн, белые списки, быстрый, стабильный, ютуб, youtube, чат гпт, chatgpt, gemini, netflix, обход, блокировки, блокировок, глушилки, глушилок, lte">
+    <meta name="robots" content="index, follow">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            background: #0a1f0a;
+            color: #e2e8f0;
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+            position: relative;
+            transition: background 0.5s ease;
+        }
+
+        .container { max-width: 700px; width: 90%; padding: 20px 0; }
+
+        .card {
+            background: linear-gradient(145deg, #0d2e0d, #0a1f0a);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 8px 32px rgba(0, 200, 100, 0.15);
+            border: 1px solid rgba(0, 255, 150, 0.08);
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: #a8f0d0;
+            text-shadow: 0 0 30px rgba(0, 200, 100, 0.2);
+            margin: 0 0 15px 0;
+            transition: all 0.5s ease;
+        }
+
+        .badge {
+            color: #b8e0d0;
+            font-size: 1rem;
+            margin-bottom: 30px;
+            display: block;
+            transition: color 0.5s ease;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .btn {
+            padding: 15px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            color: white;
+            background: linear-gradient(145deg, #1a7a4a, #0d5a35);
+            box-shadow: 0 4px 15px rgba(0, 200, 100, 0.25);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0, 200, 100, 0.4);
+            background: linear-gradient(145deg, #209a5a, #0d6a3d);
+        }
+
+        .features {
+            background: linear-gradient(145deg, #0d3d1d, #0a2a12);
+            border-radius: 16px;
+            padding: 25px;
+            margin-top: 30px;
+            text-align: left;
+            border: 1px solid rgba(0, 255, 150, 0.08);
+            transition: all 0.5s ease;
+        }
+
+        .features h2 {
+            color: #7ddfb0;
+            font-size: 1.3rem;
+            text-align: center;
+            margin-bottom: 15px;
+            transition: color 0.5s ease;
+        }
+
+        .features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features ul li {
+            padding: 6px 0 6px 25px;
+            position: relative;
+            color: #b8e0d0;
+            transition: color 0.5s ease;
+        }
+
+        .features ul li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: color 0.5s ease;
+        }
+
+        .support-note {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0, 255, 150, 0.1);
+            color: #8ac0b0;
+            font-style: italic;
+            transition: all 0.5s ease;
+        }
+
+        .support-note a {
+            color: inherit;
+            text-decoration: underline;
+        }
+
+        .color-picker {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .color-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+
+        .color-btn:hover {
+            transform: scale(1.15);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .color-btn.active {
+            border-color: #ffffff;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .color-btn-red { background: #e53e3e; }
+        .color-btn-orange { background: #ed8936; }
+        .color-btn-blue { background: #3182ce; }
+        .color-btn-purple { background: #805ad5; }
+        .color-btn-green { background: #38a169; }
+
+        .toast {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a7a4a;
+            color: white;
+            padding: 16px 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease, background 0.5s ease;
+            pointer-events: none;
+            font-size: 1rem;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .toast.show { opacity: 1; }
+        .toast.error { background: #c53030; }
+
+        @media (max-width: 480px) {
+            .card { padding: 25px 20px; }
+            h1 { font-size: 1.6rem; }
+            .color-btn { width: 40px; height: 40px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card" id="mainCard">
+            <h1 id="mainTitle">ComboVPN</h1>
+            <div class="badge">• Лучший VPN в России, который обходит все ограничения</div>
+
+            <div class="button-group">
+                <a href="https://t.me/ComboVPN_BEST" target="_blank" class="btn btn-tg">Telegram</a>
+            </div>
+
+            <div class="features">
+                <h2>ComboVPN - это VPN, объединяющий в себе все необходимости для полноценного рунета в настоящее время:</h2>
+                <ul>
+                    <li>Поддерживается на всех устройствах</li>
+                    <li>Работает на любой сети при любых условиях</li>
+                    <li>Обходит все ограничения от РКН, включая белые списки (на всех операторах и во всех регионах)</li>
+                    <li>Обходит все антироссийские ограничения (блокировки ChatGPT, Claude, Gemini, Grok, Netflix, Spotify, SoundCloud, TikTok, игр Supercell и многого другого)</li>
+                    <li>Не выключается при переключении сети</li>
+                    <li>Не требует выключения для игр и российских сервисов</li>
+                    <li>Удаляет рекламу из YouTube, оставляя доступ к заблокированному в РФ контенту</li>
+                    <li>Быстрый (при включении подключается к самому быстрому серверу из нескольких серверов от разных провайдеров)</li>
+                    <li>Стабильный (при обрыве соединения с текущим сервером автоматически подключается к другому серверу)</li>
+                    <li>Безлимитный (не ограничивает количество устройств и не имеет лимита на трафик ни по скачиванию, ни по загрузке)</li>
+                    <li>Надёжный (перенаправляет трафик только через серверы, доступ которых надёжно защищён)</li>
+                    <li>Самый дешёвый на рынке VPN-сервисов в Telegram</li>
+                </ul>
+                <div class="support-note">
+                    Предложить идею и/или уточнить какой-либо момент можно написав в поддержку VPN (<a href="https://t.me/ComboVPN_Support" target="_blank">@ComboVPN_Support</a>)
+                </div>
+            </div>
+
+            <div class="color-picker">
+                <button class="color-btn color-btn-red" data-color="red"></button>
+                <button class="color-btn color-btn-orange" data-color="orange"></button>
+                <button class="color-btn color-btn-blue" data-color="blue"></button>
+                <button class="color-btn color-btn-purple" data-color="purple"></button>
+                <button class="color-btn color-btn-green active" data-color="green"></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script>
+        const toast = document.getElementById('toast');
+
+        function showToast(message, isError = false) {
+            toast.textContent = message;
+            toast.className = 'toast show' + (isError ? ' error' : '');
+            setTimeout(() => {
+                toast.className = 'toast';
+            }, 5000);
+        }
+
+        const colorButtons = document.querySelectorAll('.color-btn');
+
+        const colorSchemes = {
+            red: {
+                bg: '#1a0505',
+                cardBg: 'linear-gradient(145deg, #2d0a0a, #1a0505)',
+                featureBg: 'linear-gradient(145deg, #3d0d0d, #2a0707)',
+                border: 'rgba(229, 62, 62, 0.15)',
+                shadow: 'rgba(229, 62, 62, 0.15)',
+                dotColor: '#fc8181',
+                titleColor: '#feb2b2',
+                textColor: '#feb2b2',
+                accent: '#e53e3e',
+                accentLight: '#fc8181',
+                accentDark: '#c53030',
+                glow: 'rgba(229, 62, 62, 0.25)',
+                glowHover: 'rgba(229, 62, 62, 0.4)'
+            },
+            orange: {
+                bg: '#1a0f05',
+                cardBg: 'linear-gradient(145deg, #2d1a0a, #1a0f05)',
+                featureBg: 'linear-gradient(145deg, #3d250d, #2a1907)',
+                border: 'rgba(237, 137, 54, 0.15)',
+                shadow: 'rgba(237, 137, 54, 0.15)',
+                dotColor: '#f6ad55',
+                titleColor: '#fbd38d',
+                textColor: '#fbd38d',
+                accent: '#ed8936',
+                accentLight: '#f6ad55',
+                accentDark: '#dd6b20',
+                glow: 'rgba(237, 137, 54, 0.25)',
+                glowHover: 'rgba(237, 137, 54, 0.4)'
+            },
+            blue: {
+                bg: '#050f1a',
+                cardBg: 'linear-gradient(145deg, #0a1a2d, #050f1a)',
+                featureBg: 'linear-gradient(145deg, #0d253d, #071a2a)',
+                border: 'rgba(49, 130, 206, 0.15)',
+                shadow: 'rgba(49, 130, 206, 0.15)',
+                dotColor: '#63b3ed',
+                titleColor: '#90cdf4',
+                textColor: '#90cdf4',
+                accent: '#3182ce',
+                accentLight: '#63b3ed',
+                accentDark: '#2b6cb0',
+                glow: 'rgba(49, 130, 206, 0.25)',
+                glowHover: 'rgba(49, 130, 206, 0.4)'
+            },
+            purple: {
+                bg: '#0f051a',
+                cardBg: 'linear-gradient(145deg, #1a0a2d, #0f051a)',
+                featureBg: 'linear-gradient(145deg, #250d3d, #19072a)',
+                border: 'rgba(128, 90, 213, 0.15)',
+                shadow: 'rgba(128, 90, 213, 0.15)',
+                dotColor: '#b794f4',
+                titleColor: '#d6bcf7',
+                textColor: '#d6bcf7',
+                accent: '#805ad5',
+                accentLight: '#b794f4',
+                accentDark: '#6b46c1',
+                glow: 'rgba(128, 90, 213, 0.25)',
+                glowHover: 'rgba(128, 90, 213, 0.4)'
+            },
+            green: {
+                bg: '#0a1f0a',
+                cardBg: 'linear-gradient(145deg, #0d2e0d, #0a1f0a)',
+                featureBg: 'linear-gradient(145deg, #0d3d1d, #0a2a12)',
+                border: 'rgba(56, 161, 105, 0.15)',
+                shadow: 'rgba(56, 161, 105, 0.15)',
+                dotColor: '#68d391',
+                titleColor: '#9ae6b4',
+                textColor: '#9ae6b4',
+                accent: '#38a169',
+                accentLight: '#68d391',
+                accentDark: '#2f855a',
+                glow: 'rgba(56, 161, 105, 0.25)',
+                glowHover: 'rgba(56, 161, 105, 0.4)'
+            }
+        };
+
+        function applyColorScheme(color) {
+            const scheme = colorSchemes[color];
+            if (!scheme) return;
+
+            document.body.style.background = scheme.bg;
+
+            const card = document.getElementById('mainCard');
+            card.style.background = scheme.cardBg;
+            card.style.boxShadow = `0 8px 32px ${scheme.shadow}`;
+            card.style.borderColor = scheme.border;
+
+            document.querySelectorAll('.features').forEach(el => {
+                el.style.background = scheme.featureBg;
+                el.style.borderColor = scheme.border;
+                el.style.boxShadow = `inset 0 0 30px ${scheme.shadow}`;
+            });
+
+            document.querySelectorAll('h1, .features h2').forEach(el => {
+                el.style.color = scheme.titleColor;
+                if (el.id === 'mainTitle') {
+                    el.style.textShadow = `0 0 30px ${scheme.glow}`;
+                }
+            });
+
+            const btnGradient = `linear-gradient(145deg, ${scheme.accentLight}, ${scheme.accentDark})`;
+            const btnHoverGradient = `linear-gradient(145deg, ${scheme.accent}, ${scheme.accentDark})`;
+
+            document.querySelectorAll('.btn').forEach(btn => {
+                btn.style.background = btnGradient;
+                btn.style.boxShadow = `0 4px 15px ${scheme.glow}`;
+                btn.onmouseenter = function() {
+                    this.style.background = btnHoverGradient;
+                    this.style.boxShadow = `0 6px 25px ${scheme.glowHover}`;
+                };
+                btn.onmouseleave = function() {
+                    this.style.background = btnGradient;
+                    this.style.boxShadow = `0 4px 15px ${scheme.glow}`;
+                };
+            });
+
+            document.querySelectorAll('.badge, .features ul li, .support-note').forEach(el => {
+                el.style.color = scheme.textColor;
+            });
+
+            document.querySelectorAll('.features ul li::before').forEach(el => {
+                el.style.color = scheme.dotColor;
+            });
+
+            document.getElementById('toast').style.background = scheme.accent;
+
+            colorButtons.forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.color-btn-${color}`).classList.add('active');
+        }
+
+        colorButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                applyColorScheme(this.dataset.color);
+            });
+        });
+
+        applyColorScheme('green');
+    </script>
+</body>
+</html>
